@@ -19,20 +19,20 @@ This style guide for Lua is inspired by Python and aims to make your code more m
    3. [Constants](#constants)
 3. [Conclusion](#conclusion)
 
-## Introduction
+## 1. Introduction
 This style guide provides conventions and best practices for writing Lua code that is clean, readable, and maintainable. By following these guidelines, you can ensure consistency across your codebase and improve collaboration with other developers.
 
-## Variables
+## 2. Variables
 N/A.
 
-### Naming Conventions
+### 2.1 Naming Conventions
 N/A.
 
-### Variable Scope
+### 2.2 Variable Scope
 N/A.
 
-### Constants
+### 2.3 Constants
 N/A.
 
-## Conclusion
+## 3. Conclusion
 N/A.
