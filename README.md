@@ -18,7 +18,8 @@ This style guide for Lua is inspired by Python and aims to make your code more m
    2. [Variable Scope](#22-variable-scope)
    3. [Constants](#23-constants)
 3. [Conclusion](#3-conclusion)
-<br><br><br>
+   
+<br>
 
 ## 1. Introduction
 This style guide provides conventions and best practices for writing Lua code that is clean, readable, and maintainable. 
@@ -36,6 +37,8 @@ N/A.
 
 ### 2.3 Constants
 N/A.
+
+<br>
 
 ## 3. Conclusion
 N/A.
