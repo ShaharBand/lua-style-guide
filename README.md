@@ -28,7 +28,7 @@ By adhering to these guidelines, you can ensure consistency across your codebase
 ## 1. Variables
 
 
-  ### 1.1 Naming Conventions
+  ## 1.1 Naming Conventions
   
   - Use descriptive names that clearly indicate the variable's purpose.
   - Avoid single-letter names except for loop variables or trivial cases.
@@ -47,7 +47,7 @@ By adhering to these guidelines, you can ensure consistency across your codebase
   ```
   **[[⬆]](#table-of-contents)**
     
-  ### 1.2 Variable Scope
+  ## 1.2 Variable Scope
   Besides global variables, Lua supports local variables. We create local variables with the local statement:
   ```lua
   j = 10         -- global variable
@@ -100,7 +100,7 @@ By adhering to these guidelines, you can ensure consistency across your codebase
   ```
   **[[⬆]](#table-of-contents)**
   
-  ### 1.3 Constants
+  ## 1.3 Constants
   
   Constants are variables that should not change once they are set. 
   Using constants can make your code more readable and prevent accidental modifications. 
