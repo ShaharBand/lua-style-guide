@@ -3,8 +3,8 @@
 </div>
 
 # Lua Style Guide
-
-This style guide for Lua is inspired by Python and aims to make your code more maintainable and clean.
+This style guide provides conventions and best practices for writing Lua code that is clean, readable, and maintainable inspired by Python. 
+By following these guidelines, you can ensure consistency across your codebase and improve collaboration with other developers.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green2.svg)](/blob/main/LICENSE)
 [![last commit](https://img.shields.io/github/last-commit/ShaharBand/lua-style-guide.svg)](https://github.com/ShaharBand/lua-style-guide/commits/main) 
@@ -12,27 +12,23 @@ This style guide for Lua is inspired by Python and aims to make your code more m
 <br> 
 
 ## Table of Contents
-1. [Introduction](#1-introduction)
-2. [Variables](#2-variables)
-   1. [Naming Conventions](#21-naming-conventions)
-   2. [Variable Scope](#22-variable-scope)
-   3. [Constants](#23-constants)
-3. [Statements](#3-statements)
-   1. [If then else](#31-if-then-else)
-   2. [Control Flow: Loops](#32-control-flow-loops)
-3. [Conclusions](#4-conclusions)
+1. [Variables](#1-variables)
+   1. [Naming Conventions](#11-naming-conventions)
+   2. [Variable Scope](#12-variable-scope)
+   3. [Constants](#13-constants)
+2. [Statements](#2-statements)
+   1. [If then else](#21-if-then-else)
+   2. [Control Flow: Loops](#22-control-flow-loops)
+3. [Conclusions](#3-conclusions)
  
 <br>
 
-## 1. Introduction
-This style guide provides conventions and best practices for writing Lua code that is clean, readable, and maintainable. 
-By following these guidelines, you can ensure consistency across your codebase and improve collaboration with other developers.
 <br><br><br>
 
-## 2. Variables
+## 1. Variables
 
 
-### 2.1 Naming Conventions
+### 1.1 Naming Conventions
 
 - Use descriptive names that clearly indicate the variable's purpose.
 - Avoid single-letter names except for loop variables or trivial cases.
@@ -50,7 +46,7 @@ local user_name = "JohnDoe"
 local total_count = 0
 ```
   
-### 2.2 Variable Scope
+### 1.2 Variable Scope
 Besides global variables, Lua supports local variables. We create local variables with the local statement:
 ```lua
 j = 10         -- global variable
@@ -102,7 +98,7 @@ local function good()
 end
 ```
 
-### 2.3 Constants
+### 1.3 Constants
 
 Constants are variables that should not change once they are set. 
 Using constants can make your code more readable and prevent accidental modifications. 
@@ -130,13 +126,13 @@ initializeGame()
 
 <br>
 
-## 3. Statements
+## 2. Statements
 Lua provides a small and conventional set of control structures, with if for conditional and while, repeat, and for for iteration. 
 All control structures have an explicit terminator: end terminates the if, for and while structures; and until terminates the repeat structure.
 
 The condition expression of a control structure may result in any value. Lua treats as true all values different from false and nil.
 
-## 3.1 If then else
+## 2.1 If then else
 An if statement tests its condition and executes its then-part or its else-part accordingly. The else-part is optional.
 When you write nested ifs, you can use elseif. 
 It is similar to an else followed by an if, but it avoids the need for multiple ends:
@@ -156,7 +152,7 @@ else
 end
 ```
 
-## 3.2 Control Flow: Loops
+## 2.2 Control Flow: Loops
 In Lua, there are two main types of loops: `while` and `repeat`. 
 Understanding the differences between them is essential for writing efficient and effective code.
 
@@ -192,7 +188,7 @@ Use `repeat` when the loop body must execute at least once before the condition 
 
 <br>
 
-## 4. Conclusions
+## 3. Conclusions
 N/A.
 
 Mentions:
