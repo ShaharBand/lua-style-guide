@@ -33,14 +33,26 @@ By following these guidelines, you can ensure consistency across your codebase a
 
 
 ### 2.1 Naming Conventions
-N/A.
+**General Guidelines:**
+- Use descriptive names that clearly indicate the variable's purpose.
+- Avoid single-letter names except for loop variables or trivial cases.
+- Follow consistent naming patterns to improve readability and maintainability.
 
+**Specific Conventions:**
+- **Variables:** Use `snake_case` for variable names.
+  
+  ```lua
+  local user_name = "JohnDoe"
+  local total_count = 0
+  ```
+  
 ### 2.2 Variable Scope
 Besides global variables, Lua supports local variables. We create local variables with the local statement:
-
-    j = 10         -- global variable
-    local i = 1    -- local variable
-    
+```lua
+j = 10         -- global variable
+local i = 1    -- local variable
+```
+  
 Unlike global variables, local variables have their scope limited to the block where they are declared. 
 A block is the body of a control structure, the body of a function, or a chunk (the file or string with the code where the variable is declared).
 
@@ -48,39 +60,43 @@ It is good programming style to use local variables whenever possible.
 Local variables help you avoid cluttering the global environment with unnecessary names. 
 Moreover, the access to local variables is faster than to global ones.
 
-    variable = 1       -- usually bad
-    local variable = 1 -- good
+```lua
+variable = 1       -- bad
+local variable = 1 -- good
+```
 
 Assign variables at the top of their scope where possible. This makes it easier to check for existing variables.
- 
-    -- bad example
-    local bad = function()
-      test()
-      //..other stuff..
 
-      local name = get_current_username()
+```lua
+-- bad example
+local bad = function()
+  test()
+  //..other stuff..
 
-      if name == 'test' then
-        return false
-      end
+  local name = get_current_username()
 
-      return name
-    end 
-<br>
+  if name == 'test' then
+    return false
+  end
 
-    -- good example
-    local function good()
-      local name = get_current_username()
+  return name
+end
+```
+```lua
+-- good example
+local function good()
+  local name = get_current_username()
 
-      test()
-      //..other stuff..
+  test()
+  //..other stuff..
 
-      if name == 'test' then
-        return false
-      end
+  if name == 'test' then
+    return false
+  end
 
-      return name
-    end
+  return name
+end
+```
 
 ### 2.3 Constants
 N/A.
@@ -98,18 +114,20 @@ An if statement tests its condition and executes its then-part or its else-part 
 When you write nested ifs, you can use elseif. 
 It is similar to an else followed by an if, but it avoids the need for multiple ends:
 
-    -- good
-    if op == "+" then
-      r = a + b
-    elseif op == "-" then
-      r = a - b
-    elseif op == "*" then
-      r = a*b
-    elseif op == "/" then
-      r = a/b
-    else
-      error("invalid operation")
-    end
+```lua
+-- good
+if op == "+" then
+  r = a + b
+elseif op == "-" then
+  r = a - b
+elseif op == "*" then
+  r = a*b
+elseif op == "/" then
+  r = a/b
+else
+  error("invalid operation")
+end
+```
 
 ## 3.2 Control Flow: Loops
 In Lua, there are two main types of loops: `while` and `repeat`. 
@@ -119,10 +137,12 @@ Understanding the differences between them is essential for writing efficient an
 The `while` loop tests its condition before executing the loop's body. If the condition is `false`, the loop ends immediately. 
 If the condition is `true`, Lua executes the body and then repeats the test.
 
-    while false do
-      print("hi")
-    end
-    -- This will never print anything
+```lua
+while false do
+  print("hi")
+end
+-- This will never print anything
+```
 
 ### `repeat` Loop
 
@@ -130,12 +150,13 @@ The `repeat` loop, also known as `repeat-until`, behaves differently.
 It always executes its body at least once because the condition is tested after the body. 
 The loop continues until the condition evaluates to `true`.
 
-    -- Print the first non-empty line
-    repeat
-      line = io.read()
-    until line ~= ""
-    print(line)
-
+```lua
+-- Print the first non-empty line
+repeat
+  line = io.read()
+until line ~= ""
+print(line)
+```
 
 ### Choosing the Right Loop
 Choosing between `while` and `repeat` can help avoid unnecessary code and ensure that your loops function as intended. 
