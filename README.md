@@ -4,7 +4,7 @@
 
 # Lua Style Guide
 
-Inspired by Python, this style guide provides conventions and best practices for writing clean, readable, and maintainable Lua code. 
+Inspired by FiveM, this style guide provides conventions and best practices for writing clean, readable, and maintainable Lua code. 
 By adhering to these guidelines, you can ensure consistency across your codebase and enhance collaboration with other developers.
 
 Feel free to fork this style guide and change to your own
@@ -36,7 +36,7 @@ you find any mistakes or typos.
   - Use descriptive names that clearly indicate the variable's purpose.
   - Avoid single-letter names except for loop variables or trivial cases.
   - Follow consistent naming patterns to improve readability and maintainability.
-  - Use `snake_case` for local variable names.
+  - Use `camelCase` for local variable names.
   - Use `UPPER_CASE_WITH_UNDERSCORES` for constant
     
   ```lua
@@ -45,8 +45,8 @@ you find any mistakes or typos.
   PI = 3.14159
   
   -- local
-  local user_name = "JohnDoe"
-  local total_count = 0
+  local userName = "JohnDoe"
+  local totalCount = 0
   ```
   **[[⬆]](#table-of-contents)**
     
@@ -77,7 +77,7 @@ you find any mistakes or typos.
     test()
     //..other stuff..
   
-    local name = get_current_username()
+    local name = GetCurrentUsername()
   
     if name == 'test' then
       return false
@@ -88,8 +88,8 @@ you find any mistakes or typos.
   ```
   ```lua
   -- good example
-  local function good()
-    local name = get_current_username()
+  local function Good()
+    local name = GetCurrentUsername()
   
     test()
     //..other stuff..
@@ -120,13 +120,13 @@ you find any mistakes or typos.
   GAME_TITLE = "Super Lua Game"
   
   -- Function using constants
-  local function initialize_game()
-      local player_health = MAX_HEALTH
-      local player_score = INITIAL_SCORE
+  local function InitializeGame()
+      local playerHealth = MAX_HEALTH
+      local playerScore = INITIAL_SCORE
       print("Welcome to " .. GAME_TITLE)
   end
   
-  initialize_game()
+  InitializeGame()
   ```
   **[[⬆]](#table-of-contents)**
   
