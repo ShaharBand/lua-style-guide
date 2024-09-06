@@ -25,8 +25,6 @@ By adhering to these guidelines, you can ensure consistency across your codebase
  
 <br>
 
-<br><br>
-
 ## 1. Variables
 
 
