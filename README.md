@@ -3,8 +3,10 @@
 </div>
 
 # Lua Style Guide
-This style guide provides conventions and best practices for writing Lua code that is clean, readable, and maintainable inspired by Python. 
-By following these guidelines, you can ensure consistency across your codebase and improve collaboration with other developers.
+
+Inspired by Python, this style guide provides conventions and best practices for writing clean, readable, and maintainable Lua code. 
+By adhering to these guidelines, you can ensure consistency across your codebase and enhance collaboration with other developers.
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green2.svg)](/blob/main/LICENSE)
 [![last commit](https://img.shields.io/github/last-commit/ShaharBand/lua-style-guide.svg)](https://github.com/ShaharBand/lua-style-guide/commits/main) 
