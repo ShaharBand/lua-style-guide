@@ -120,13 +120,13 @@ you find any mistakes or typos.
   GAME_TITLE = "Super Lua Game"
   
   -- Function using constants
-  local function initializeGame()
+  local function initialize_game()
       local player_health = MAX_HEALTH
       local player_score = INITIAL_SCORE
       print("Welcome to " .. GAME_TITLE)
   end
   
-  initializeGame()
+  initialize_game()
   ```
   **[[⬆]](#table-of-contents)**
   
