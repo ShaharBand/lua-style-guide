@@ -116,8 +116,8 @@ GAME_TITLE = "Super Lua Game"
 
 -- Function using constants
 local function initializeGame()
-    local playerHealth = MAX_HEALTH
-    local playerScore = INITIAL_SCORE
+    local player_health = MAX_HEALTH
+    local player_score = INITIAL_SCORE
     print("Welcome to " .. GAME_TITLE)
 end
 
