@@ -17,7 +17,8 @@ This style guide for Lua is inspired by Python and aims to make your code more m
    1. [Naming Conventions](#21-naming-conventions)
    2. [Variable Scope](#22-variable-scope)
    3. [Constants](#23-constants)
-3. [Conclusion](#3-conclusion)
+3. [Statements](#3-statements)
+3. [Conclusions](#4-conclusions)
    
 <br>
 
@@ -27,18 +28,82 @@ By following these guidelines, you can ensure consistency across your codebase a
 <br><br><br>
 
 ## 2. Variables
-N/A.
+
 
 ### 2.1 Naming Conventions
 N/A.
 
 ### 2.2 Variable Scope
-N/A.
+Besides global variables, Lua supports local variables. We create local variables with the local statement:
+
+    j = 10         -- global variable
+    local i = 1    -- local variable
+    
+Unlike global variables, local variables have their scope limited to the block where they are declared. 
+A block is the body of a control structure, the body of a function, or a chunk (the file or string with the code where the variable is declared).
+
+It is good programming style to use local variables whenever possible. 
+Local variables help you avoid cluttering the global environment with unnecessary names. 
+Moreover, the access to local variables is faster than to global ones.
+
+    variable = 1       -- usually bad
+    local variable = 1 -- good
+
+Assign variables at the top of their scope where possible. This makes it easier to check for existing variables.
+ 
+    -- bad example
+    local bad = function()
+      test()
+      //..other stuff..
+
+      local name = get_current_username()
+
+      if name == 'test' then
+        return false
+      end
+
+      return name
+    end 
+<br>
+
+    -- good example
+    local function good()
+      local name = get_current_username()
+
+      test()
+      //..other stuff..
+
+      if name == 'test' then
+        return false
+      end
+
+      return name
+    end
 
 ### 2.3 Constants
 N/A.
 
 <br>
 
-## 3. Conclusion
+## 3. Statements
+
+When you write nested ifs, you can use elseif. 
+It is similar to an else followed by an if, but it avoids the need for multiple ends:
+
+    -- good
+    if op == "+" then
+      r = a + b
+    elseif op == "-" then
+      r = a - b
+    elseif op == "*" then
+      r = a*b
+    elseif op == "/" then
+      r = a/b
+    else
+      error("invalid operation")
+    end
+    
+<br>
+
+## 4. Conclusions
 N/A.
