@@ -33,18 +33,22 @@ By following these guidelines, you can ensure consistency across your codebase a
 
 
 ### 2.1 Naming Conventions
-**General Guidelines:**
+
 - Use descriptive names that clearly indicate the variable's purpose.
 - Avoid single-letter names except for loop variables or trivial cases.
 - Follow consistent naming patterns to improve readability and maintainability.
-
-**Specific Conventions:**
-- **Variables:** Use `snake_case` for variable names.
+- Use `snake_case` for local variable names.
+- Use `UPPER_CASE_WITH_UNDERSCORES` for constant
   
-  ```lua
-  local user_name = "JohnDoe"
-  local total_count = 0
-  ```
+```lua
+-- global
+MAX_USERS = 100
+PI = 3.14159
+
+-- local
+local user_name = "JohnDoe"
+local total_count = 0
+```
   
 ### 2.2 Variable Scope
 Besides global variables, Lua supports local variables. We create local variables with the local statement:
@@ -99,7 +103,30 @@ end
 ```
 
 ### 2.3 Constants
-N/A.
+
+Constants are variables that should not change once they are set. 
+Using constants can make your code more readable and prevent accidental modifications. 
+In Lua, we typically follow the convention of naming them in `UPPER_CASE_WITH_UNDERSCORES`.
+
+Define constants at the top of the file or the top of their respective scope.
+Use constants to avoid magic numbers and hard-coded values within your code.
+Group related constants together for better organization and readability.
+
+```lua
+-- Define constants at the top of the file
+MAX_HEALTH = 100
+INITIAL_SCORE = 0
+GAME_TITLE = "Super Lua Game"
+
+-- Function using constants
+local function initializeGame()
+    local playerHealth = MAX_HEALTH
+    local playerScore = INITIAL_SCORE
+    print("Welcome to " .. GAME_TITLE)
+end
+
+initializeGame()
+```
 
 <br>
 
