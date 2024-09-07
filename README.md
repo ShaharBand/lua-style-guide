@@ -24,7 +24,8 @@ you find any mistakes or typos.
 2. [Statements](#2-statements)
    1. [If then else](#21-if-then-else)
    2. [Control Flow: Loops](#22-control-flow-loops)
-3. [Conclusions](#3-conclusions)
+3. [Functions](#3-functions)
+3. [Conclusions](#4-conclusions)
  
 <br>
 
@@ -197,7 +198,37 @@ The condition expression of a control structure may result in any value. Lua tre
     
 <br>
 
-## 3. Conclusions
+## 3. Functions
+
+
+  ## 3.1 Naming Conventions
+  
+- Use descriptive names that clearly indicate the function's purpose.
+  ```lua
+  CalculatePlayerScore()   -- good
+  UpdateDatabaseRecord()   -- good
+  
+  function calcScore()     -- bad
+  function updRec()        -- bad
+  ```
+- Use `PascalCase` for function names. 
+    
+  ```lua
+  -- Good example
+  function CalculatePlayerScore(player)
+    -- function logic
+  end
+  
+  -- Bad example
+  function calcScore(p)
+    -- function logic
+  end
+  ```
+  **[[⬆]](#table-of-contents)**
+
+<br>
+  
+## 4. Conclusions
 N/A.
 
   **[[⬆]](#table-of-contents)**
