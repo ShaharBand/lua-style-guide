@@ -25,6 +25,7 @@ you find any mistakes or typos.
    1. [If then else](#21-if-then-else)
    2. [Control Flow: Loops](#22-control-flow-loops)
 3. [Functions](#3-functions)
+  1. [Naming Conventions](#31-naming-conventions)
 3. [Conclusions](#4-conclusions)
  
 <br>
