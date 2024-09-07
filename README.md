@@ -206,30 +206,38 @@ The condition expression of a control structure may result in any value. Lua tre
   
 - Use descriptive names that clearly indicate the function's purpose.
   ```lua
-  function CalculatePlayerScore()   -- good
+  -- good
+  function CalculatePlayerScore()   
       -- function logic
   end
-  
-  function UpdateDatabaseRecord()   -- good
+
+  -- good
+  function UpdateDatabaseRecord()
       -- function logic
   end
-  
-  function calcScore()     -- bad
+  ```
+  ```lua
+  --- bad
+  function calcScore() 
       -- function logic
   end
-  
-  function updRec()        -- bad
+
+  -- bad
+  function updRec()        
       -- function logic
   end
   ```
 - Use `PascalCase` for function names. 
     
   ```lua
-  function CalculatePlayerScore(player)   -- good
+  -- good
+  function CalculatePlayerScore(player)  
     -- function logic
   end
-   
-  function calcScore(p)                   -- bad
+  ```
+  ```lua
+  -- bad
+  function calcScore(p)                  
     -- function logic
   end
   ```
