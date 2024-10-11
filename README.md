@@ -21,7 +21,8 @@ you find any mistakes or typos.
    1. [Naming Conventions](#11-naming-conventions)
    2. [Variable Scope](#12-variable-scope)
    3. [Constants](#13-constants)
-   4. [Tables](#14-tables)
+   4. [Strings](#14-strings)
+   5. [Tables](#15-tables)
 2. [Statements](#2-statements)
    1. [If then else](#21-if-then-else)
    2. [Control Flow: Loops](#22-control-flow-loops)
@@ -142,7 +143,17 @@ you find any mistakes or typos.
   ```
   **[[⬆]](#table-of-contents)**
 
-  ## 1.4 Tables
+  ## 1.4 Strings
+
+  - Use "double quotes" for strings, use 'single quotes' when writing strings that contain double quotes.
+
+  > Double quotes are commonly used as string delimiters in many programming languages, providing a clearer distinction compared to single quotes. However, single quotes can be useful for avoiding the need to escape double quotes within string literals.
+
+
+  cases to avoid .. cases to use formatting etc
+
+
+  ## 1.5 Tables
   
   The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except `nil`.
 
@@ -233,6 +244,7 @@ The condition expression of a control structure may result in any value. Lua tre
   - Use `PascalCase` for function names.
   - Use `snake_case` for parameters name.
   - Use descriptive names that clearly indicate the function's purpose.
+  - Don’t use spaces between function name and opening round bracket. Split arguments with one whitespace character.
   ```lua
   -- good
   function CalculatePlayerScore()   
