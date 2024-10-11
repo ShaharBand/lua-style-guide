@@ -21,6 +21,7 @@ you find any mistakes or typos.
    1. [Naming Conventions](#11-naming-conventions)
    2. [Variable Scope](#12-variable-scope)
    3. [Constants](#13-constants)
+   4. [Tables](#14-tables)
 2. [Statements](#2-statements)
    1. [If then else](#21-if-then-else)
    2. [Control Flow: Loops](#22-control-flow-loops)
@@ -36,11 +37,15 @@ you find any mistakes or typos.
   ## 1.1 Naming Conventions
   
   - Use descriptive names that clearly indicate the variable's purpose.
-  - single-letter variable names should be avoided except for very small scopes (less than ten lines) or for iterators.
+  - Single-letter variable names should be avoided except for very small scopes (less than ten lines) or for iterators.
+  - `i` should be used only as a counter variable in for loops (either numeric for or `ipairs`).
+  - Prefer more descriptive names than `k` and `v` when iterating with `pairs`, unless you are writing a function that operates on generic tables.
+  - Use `_` for ignored variables.
   - Variable names with larger scope should be more descriptive than those with smaller scope. 
   - Follow consistent naming patterns to improve readability and maintainability.
+
   - Use `snake_case` for local variable names.
-  - Use `UPPER_CASE_WITH_UNDERSCORES` for constant
+  - Use `UPPER_CASE_WITH_UNDERSCORES` for constant.
 
   ```lua
   -- global
@@ -52,7 +57,7 @@ you find any mistakes or typos.
   local total_count = 0
   ```
 
-Note: There is some confusion in Lua about variable naming conventions. In case of a framework or large projects, follow the already existing conventions according to the scope to avoid mixing new conventions.
+  > Note: There is some confusion in Lua about variable naming conventions. In case of a framework or large projects, follow the already existing conventions according to the scope to avoid mixing new conventions.
 
   **[[⬆]](#table-of-contents)**
     
@@ -133,6 +138,23 @@ Note: There is some confusion in Lua about variable naming conventions. In case 
   end
   
   InitializeGame()
+  ```
+  **[[⬆]](#table-of-contents)**
+
+  ## 1.4 Tables
+  
+  The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except `nil`.
+
+  - Initalizing a table with populating its fields all at once, if possible.
+  - Add a trailing comma to all fields, including the last one.
+    
+  > This makes the structure of your tables more evident at a glance.
+  > Trailing commas make it quicker to add new fields and produces shorter diffs.
+  ```lua
+  local player_data = {
+    name = "Shahar",
+    level = 12,
+  }
   ```
   **[[⬆]](#table-of-contents)**
   
