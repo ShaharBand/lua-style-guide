@@ -57,6 +57,7 @@ you find any mistakes or typos.
   local total_count = 0
   ```
 
+
   > Note: There is some confusion in Lua about variable naming conventions. In case of a framework or large projects, follow the already existing conventions according to the scope to avoid mixing new conventions.
 
   **[[⬆]](#table-of-contents)**
@@ -148,8 +149,7 @@ you find any mistakes or typos.
   - Initalizing a table with populating its fields all at once, if possible.
   - Add a trailing comma to all fields, including the last one.
     
-  > This makes the structure of your tables more evident at a glance.
-  > Trailing commas make it quicker to add new fields and produces shorter diffs.
+  > This makes the structure of your tables more evident at a glance, Trailing commas make it quicker to add new fields and produces shorter diffs.
   ```lua
   local player_data = {
     name = "Shahar",
