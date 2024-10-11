@@ -4,7 +4,7 @@
 
 # Lua Style Guide
 
-Inspired by FiveM, this style guide provides conventions and best practices for writing clean, readable, and maintainable Lua code. 
+Inspired by Python PEP8, this style guide provides conventions and best practices for writing clean, readable, and maintainable Lua code. 
 By adhering to these guidelines, you can ensure consistency across your codebase and enhance collaboration with other developers.
 
 Feel free to fork this style guide and change to your own
@@ -38,7 +38,7 @@ you find any mistakes or typos.
   - Use descriptive names that clearly indicate the variable's purpose.
   - Avoid single-letter names except for loop variables or trivial cases.
   - Follow consistent naming patterns to improve readability and maintainability.
-  - Use `camelCase` for local variable names.
+  - Use `snake_case` for local variable names.
   - Use `UPPER_CASE_WITH_UNDERSCORES` for constant
     
   ```lua
@@ -47,9 +47,12 @@ you find any mistakes or typos.
   PI = 3.14159
   
   -- local
-  local userName = "JohnDoe"
-  local totalCount = 0
+  local user_name = "JohnDoe"
+  local total_count = 0
   ```
+
+Note: There is some confusion in Lua about variable naming conventions. In case of a framework or large projects, follow the already existing conventions according to the scope to avoid mixing new conventions.
+
   **[[⬆]](#table-of-contents)**
     
   ## 1.2 Variable Scope
@@ -123,8 +126,8 @@ you find any mistakes or typos.
   
   -- Function using constants
   local function InitializeGame()
-      local playerHealth = MAX_HEALTH
-      local playerScore = INITIAL_SCORE
+      local player_health = MAX_HEALTH
+      local player_score = INITIAL_SCORE
       print("Welcome to " .. GAME_TITLE)
   end
   
