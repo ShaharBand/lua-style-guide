@@ -36,11 +36,12 @@ you find any mistakes or typos.
   ## 1.1 Naming Conventions
   
   - Use descriptive names that clearly indicate the variable's purpose.
-  - Avoid single-letter names except for loop variables or trivial cases.
+  - single-letter variable names should be avoided except for very small scopes (less than ten lines) or for iterators.
+  - Variable names with larger scope should be more descriptive than those with smaller scope. 
   - Follow consistent naming patterns to improve readability and maintainability.
   - Use `snake_case` for local variable names.
   - Use `UPPER_CASE_WITH_UNDERSCORES` for constant
-    
+
   ```lua
   -- global
   MAX_USERS = 100
