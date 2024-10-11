@@ -207,38 +207,9 @@ The condition expression of a control structure may result in any value. Lua tre
 
   ## 3.1 Naming Conventions
 
-- Use `PascalCase` for function names.
-- Use `snake_case` for parameters name.
-    
-  ```lua
-  -- good
-  function CalculatePlayerScore(player)  
-    -- function logic
-  end
-  ```
-  ```lua
-  -- bad
-  function calcScore(p)                  
-    -- function logic
-  end
-
-  -- bad
-  function calc_score(p)                  
-    -- function logic
-  end
-
-  -- bad
-  function CALC_SCORE(p)                  
-    -- function logic
-  end
-
-  -- bad
-  function CalculatePlayerScore(Player)                  
-    -- function logic
-  end
-  ```
-
-- Use descriptive names that clearly indicate the function's purpose.
+  - Use `PascalCase` for function names.
+  - Use `snake_case` for parameters name.
+  - Use descriptive names that clearly indicate the function's purpose.
   ```lua
   -- good
   function CalculatePlayerScore()   
@@ -246,19 +217,35 @@ The condition expression of a control structure may result in any value. Lua tre
   end
 
   -- good
-  function UpdateDatabaseRecord()
+  function UpdateDatabaseRecord(record)
       -- function logic
   end
   ```
+
   ```lua
-  --- bad
+  --- bad (function camelCase name)
   function calcScore() 
       -- function logic
   end
 
-  -- bad
+  -- bad (function undescriptive name)
   function updRec()        
       -- function logic
+  end
+
+  -- bad (function snake_case name)
+  function calc_score(p)                  
+    -- function logic
+  end
+
+  -- bad (function uppercase snake name)
+  function CALC_SCORE(p)                  
+    -- function logic
+  end
+
+  -- bad (parameter name)
+  function CalculatePlayerScore(Player)                  
+    -- function logic
   end
   ```
 
