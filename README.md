@@ -241,18 +241,17 @@ The condition expression of a control structure may result in any value. Lua tre
 
   ## 3.1 Naming Conventions
 
-  - Use `PascalCase` for function names.
-  - Use `snake_case` for parameters name.
+  - Use `snake_case` for function and parameters name.
   - Use descriptive names that clearly indicate the function's purpose.
   - Don’t use spaces between function name and opening round bracket. Split arguments with one whitespace character.
   ```lua
   -- good
-  function CalculatePlayerScore()   
+  function calculate_player_score()   
       -- function logic
   end
 
   -- good
-  function UpdateDatabaseRecord(record)
+  function update_database_record(record)
       -- function logic
   end
   ```
@@ -268,17 +267,17 @@ The condition expression of a control structure may result in any value. Lua tre
       -- function logic
   end
 
-  -- bad (function snake_case name)
-  function calc_score(p)                  
+  -- bad (function name PascalCase)
+  function CalculateScore(p)                  
     -- function logic
   end
 
-  -- bad (function uppercase snake name)
+  -- bad (function name UPPER_SNAKE_CASE)
   function CALC_SCORE(p)                  
     -- function logic
   end
 
-  -- bad (parameter name)
+  -- bad (bad parameter name)
   function CalculatePlayerScore(Player)                  
     -- function logic
   end
