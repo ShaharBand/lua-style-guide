@@ -240,9 +240,9 @@ The condition expression of a control structure may result in any value. Lua tre
   elseif op == "-" then
     r = a - b
   elseif op == "*" then
-    r = a*b
+    r = a * b
   elseif op == "/" then
-    r = a/b
+    r = a / b
   else
     error("invalid operation")
   end
@@ -381,7 +381,7 @@ The condition expression of a control structure may result in any value. Lua tre
 
   ```lua
   -- bad
-  local sum=1+2
+  local sum = 1 + 2
   print (sum)
   function c () end
 
