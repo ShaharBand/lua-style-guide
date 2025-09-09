@@ -11,7 +11,7 @@ Feel free to fork this style guide and change to your own
 liking, and file issues / pull requests if you have questions, comments, or if
 you find any mistakes or typos.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green2.svg)](/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green2.svg)](LICENSE)
 [![last commit](https://img.shields.io/github/last-commit/ShaharBand/lua-style-guide.svg)](https://github.com/ShaharBand/lua-style-guide/commits/main) 
 [![stars](https://img.shields.io/github/stars/ShaharBand/lua-style-guide.svg?style=badge)](https://github.com/ShaharBand/lua-style-guide/stargazers) 
 <br> 
@@ -28,7 +28,24 @@ you find any mistakes or typos.
    2. [Control Flow: Loops](#22-control-flow-loops)
 3. [Functions](#3-functions)
    1. [Naming Conventions](#31-naming-conventions)
-3. [Conclusions](#4-conclusions)
+4. [Formatting](#4-formatting)
+   1. [Indentation and Whitespace](#41-indentation-and-whitespace)
+   2. [Line Length and Breaks](#42-line-length-and-breaks)
+   3. [Spacing](#43-spacing)
+5. [Modules](#5-modules)
+   1. [Module Pattern](#51-module-pattern)
+   2. [Requiring and Locals](#52-requiring-and-locals)
+6. [Error Handling](#6-error-handling)
+   1. [pcall and xpcall](#61-pcall-and-xpcall)
+   2. [Assertions](#62-assertions)
+7. [Comments and Documentation](#7-comments-and-documentation)
+   1. [Comments](#71-comments)
+   2. [LDoc/EmmyLua](#72-ldocemmylua)
+8. [Performance](#8-performance)
+9. [Metatables and OOP](#9-metatables-and-oop)
+10. [Coroutines](#10-coroutines)
+11. [Tooling](#11-tooling)
+12. [Testing](#12-testing)
  
 <br>
 
@@ -46,7 +63,7 @@ you find any mistakes or typos.
   - Follow consistent naming patterns to improve readability and maintainability.
 
   - Use `snake_case` for local variable names.
-  - Use `UPPER_CASE_WITH_UNDERSCORES` for constant.
+  - Use `UPPER_CASE_WITH_UNDERSCORES` for constants.
 
   ```lua
   -- global
@@ -88,29 +105,29 @@ you find any mistakes or typos.
   -- bad example
   local bad = function()
     test()
-    //..other stuff..
-  
-    local name = GetCurrentUsername()
-  
+    -- other stuff
+
+    local name = get_current_username()
+
     if name == 'test' then
       return false
     end
-  
+
     return name
   end
   ```
   ```lua
   -- good example
-  local function Good()
-    local name = GetCurrentUsername()
-  
+  local function good()
+    local name = get_current_username()
+
     test()
-    //..other stuff..
-  
+    -- other stuff
+
     if name == 'test' then
       return false
     end
-  
+
     return name
   end
   ```
@@ -133,31 +150,65 @@ you find any mistakes or typos.
   GAME_TITLE = "Super Lua Game"
   
   -- Function using constants
-  local function InitializeGame()
-      local player_health = MAX_HEALTH
-      local player_score = INITIAL_SCORE
-      print("Welcome to " .. GAME_TITLE)
+  local function initialize_game()
+    local player_health = MAX_HEALTH
+    local player_score = INITIAL_SCORE
+    print("Welcome to " .. GAME_TITLE)
   end
   
-  InitializeGame()
+  initialize_game()
   ```
   **[[⬆]](#table-of-contents)**
 
   ## 1.4 Strings
+  
+  - Prefer "double quotes" for general strings; use 'single quotes' when the string contains double quotes.
+  - Use `string.format` for readability instead of many concatenations.
+  - Avoid concatenation inside tight loops; collect parts and use `table.concat`.
+  - Use long brackets `[[ ... ]]` for multi-line literals.
+  - Escape only when needed (e.g., `\n`, `\t`, `\\`).
+  
+  ```lua
+  local greeting = "Hello, \"Lua\""
+  local msg = string.format("%s scored %d points", player_name, score)
 
-  - Use "double quotes" for strings, use 'single quotes' when writing strings that contain double quotes.
+  -- bad
+  local msg = "Hello " .. name .. ", you have " .. count .. " messages."
 
-  > Double quotes are commonly used as string delimiters in many programming languages, providing a clearer distinction compared to single quotes. However, single quotes can be useful for avoiding the need to escape double quotes within string literals.
+  -- good
+  local msg = string.format("Hello %s, you have %d messages.", name, count)
 
+  -- bad (slow + messy)
+  local result = ""
+  for i = 1, 1000 do
+    result = result .. i .. ","
+  end
 
-  cases to avoid .. cases to use formatting etc
+  -- good
+  local parts = {}
+  for i = 1, 1000 do
+    parts[#parts+1] = string.format("%d,", i)
+  end
+  local result = table.concat(parts)
+
+  -- bad
+  local text = "This is line 1\nThis is line 2\nThis is line 3"
+
+  -- good
+  local text = [[
+  This is line 1
+  This is line 2
+  This is line 3
+  ]]
+
+  ```
 
 
   ## 1.5 Tables
   
   The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except `nil`.
 
-  - Initalizing a table with populating its fields all at once, if possible.
+  - Initializing a table with populating its fields all at once, if possible.
   - Add a trailing comma to all fields, including the last one.
     
   > This makes the structure of your tables more evident at a glance, Trailing commas make it quicker to add new fields and produces shorter diffs.
@@ -247,24 +298,24 @@ The condition expression of a control structure may result in any value. Lua tre
   ```lua
   -- good
   function calculate_player_score()   
-      -- function logic
+    -- function logic
   end
 
   -- good
   function update_database_record(record)
-      -- function logic
+    -- function logic
   end
   ```
 
   ```lua
   --- bad (function camelCase name)
   function calcScore() 
-      -- function logic
+    -- function logic
   end
 
   -- bad (function undescriptive name)
   function updRec()        
-      -- function logic
+    -- function logic
   end
 
   -- bad (function name PascalCase)
@@ -287,10 +338,262 @@ The condition expression of a control structure may result in any value. Lua tre
 
 <br>
   
-## 4. Conclusions
-N/A.
+## 4. Formatting
+
+  ### 4.1 Indentation and Whitespace
+  - Use tabs for indentation not spaces manually.
+  - Trim trailing whitespace; keep files UTF-8 without BOM.
+  - One statement per line.
+
+  ```lua
+  -- bad (spaces)
+  function greet()
+    print("hello")
+  end
+
+  -- good (tabs)
+  function greet()
+	  print("hello")
+  end
+  ```
+
+  ### 4.2 Line Length and Breaks
+  - Soft limit lines to ~100–120 columns.
+  - Break long expressions at operators, align continued lines.
+
+  ```lua
+  -- bad
+  local msg = string.format("Hello %s, you have %d unread messages and %d notifications today.", name, unread, notifications)
+
+  -- good
+  local msg = string.format(
+    "Hello %s, you have %d unread messages and %d notifications today.",
+    name,
+    unread,
+    notifications
+  )
+  ```
+
+  ### 4.3 Spacing
+  - One space around binary operators (`=`, `+`, `..`, etc.).
+  - No space after function names before `(`.
+  - One blank line between top-level definitions.
+
+  ```lua
+  -- bad
+  local sum=1+2
+  print (sum)
+  function c () end
+
+  -- good
+  local sum = 1 + 2
+  print(sum)
+
+  function a() end
+
+  function b() end
+  ```
 
   **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 5. Modules
+
+  ### 5.1 Module Pattern
+  - Prefer returning a table of functions/values from files.
+  - Avoid polluting `_G` with globals.
+  ```lua
+  -- good
+  local M = {}
+
+  function M.add(a, b)
+    return a + b
+  end
+
+  return M
+
+  --  bad (puts function in _G)
+  function add(a, b)
+    return a + b
+  end
+
+  ```
+
+  ### 5.2 Requiring and Locals
+  - Assign `require` results to locals for speed and clarity.
+  ```lua
+  local utils = require("utils")
+  local trim = utils.trim
+  ```
+
+  - Prefer explicit imports over pulling from `_G`.
+  ```lua
+  -- bad
+  result = some_global_lib.process(data)
+
+  -- good
+  local lib = require("some_global_lib")
+  local result = lib.process(data)
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 6. Error Handling
+
+  ### 6.1 pcall and xpcall
+  - Use `pcall`/`xpcall` for recoverable failures; avoid bare errors in libraries.
+  ```lua
+  local ok, result = pcall(do_work)
+  if not ok then
+    log_error(result)
+  end
+  ```
+
+  ```lua
+  -- with traceback
+  local ok, err = xpcall(do_work, debug.traceback)
+  if not ok then
+    log_error(err)
+  end
+  ```
+
+  ### 6.2 Assertions
+  - Use `assert` for programmer errors and preconditions.
+  ```lua
+  local file = assert(io.open(path, "r"))
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 7. Comments and Documentation
+
+  ### 7.1 Comments
+  - Use `--` for single-line comments; `--[[ ... ]]` for multi-line.
+  - Explain "why" not "what"; keep comments up to date.
+  - Comments should be avoided if the code is clear
+
+  ### 7.2 LDoc/EmmyLua
+  - Document public APIs with LDoc/EmmyLua-style annotations for better tooling.
+  ```lua
+  --- Calculates the area of a circle
+  -- @param r number radius
+  -- @return number area
+  local function circle_area(r)
+    return math.pi * r * r
+  end
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 8. Performance
+  - Prefer locals over globals (faster lookups).
+  - Hoist invariants out of loops; cache `#t` when needed.
+  - Use `table.concat` for building strings.
+  - Pre-size arrays when possible: `local t = table.create and table.create(n) or {}`.
+
+  ```lua
+  -- bad (global lookup each time)
+  for i = 1, n do
+    total = total + math.abs(values[i])
+  end
+
+  -- good (cache locals)
+  local abs = math.abs
+  for i = 1, n do
+    total = total + abs(values[i])
+  end
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 9. Metatables and OOP
+  - Keep metatable usage minimal and explicit.
+  - Use `__index` for method lookup; avoid magic unless well-documented.
+  ```lua
+  local Point = {}
+  Point.__index = Point
+  function Point.new(x, y)
+    return setmetatable({ x = x, y = y }, Point)
+  end
+  function Point:len()
+    return math.sqrt(self.x * self.x + self.y * self.y)
+  end
+  ```
+
+  ```lua
+  -- bad (implicit globals, hidden metatable behavior)
+  P = {}
+  setmetatable(P, { __index = function() return 0 end })
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 10. Coroutines
+  - Use coroutines to model producers/consumers and cooperative tasks.
+  - Keep coroutine lifecycles clear; avoid deep nesting.
+  ```lua
+  local function generator(n)
+    return coroutine.wrap(function()
+      for i = 1, n do coroutine.yield(i) end
+    end)
+  end
+  ```
+
+  ```lua
+  -- consumer
+  local next_num = generator(3)
+  print(next_num()) -- 1
+  print(next_num()) -- 2
+  print(next_num()) -- 3
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 11. Tooling
+  - Formatter: stylua; Linter: luacheck; Docs: LDoc.
+  - Configure CI to run formatting and linting.
+  ```bash
+  stylua .
+  luacheck .
+  ```
+
+  ```lua
+  -- .luacheckrc (example)
+  -- globals = { "vim" }
+  -- ignore  = { "631" } -- line too long (if policy allows)
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
+
+## 12. Testing
+  - Use busted or luaunit; structure tests mirroring module layout.
+  - Keep tests deterministic; avoid global state.
+  ```lua
+  describe("math utils", function()
+    it("adds", function()
+      assert.are.equal(3, add(1, 2))
+    end)
+  end)
+  ```
+
+  **[[⬆]](#table-of-contents)**
+
+<br>
 
 Mentions:
 - https://www.lua.org/
